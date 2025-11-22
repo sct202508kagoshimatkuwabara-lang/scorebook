@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>チーム削除</h2>
+
+<p>本当に「{{ team.name }}」を削除しますか？</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">削除する</button>
+</form>
+
+<a href="{% url 'team_list' %}">戻る</a>
+{% endblock %}

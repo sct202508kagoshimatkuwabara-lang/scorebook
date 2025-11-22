@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>選手一覧</h2>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>チーム</th>
+        <th>背番号</th>
+        <th>ポジション</th>
+        <th>操作</th>
+    </tr>
+    {% for p in players %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.team }}</td>
+        <td>{{ p.jersey_number }}</td>
+        <td>{{ p.get_default_position_display }}</td>
+        <td>
+            <a href="{% url 'player_edit' p.id %}">編集</a> |
+            <a href="{% url 'player_delete' p.id %}">削除</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="{% url 'player_create' %}">＋ 新規選手登録</a>
+{% endblock %}

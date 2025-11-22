@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ team.name }}（{{ team.location }}）</h2>
+
+<h3>所属選手一覧</h3>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>背番号</th>
+        <th>ポジション</th>
+        <th>編集</th>
+    </tr>
+
+    {% for p in players %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.jersey_number }}</td>
+        <td>{{ p.get_default_position_display }}</td>
+        <td>
+            <a href="{% url 'player_edit' p.id %}">編集</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">選手がまだ登録されていません。</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="{% url 'player_create' %}?team={{ team.id }}">＋ このチームに選手追加</a>
+
+<br><br>
+<a href="{% url 'team_list' %}">← チーム一覧にもどる</a>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>チーム一覧</h2>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>チーム名</th>
+        <th>所在地</th>
+        <th>操作</th>
+    </tr>
+
+    {% for team in teams %}
+    <tr>
+        <td>{{ team.id }}</td>
+
+        <!-- ここを team_detail へリンク -->
+        <td>
+            <a href="{% url 'team_detail' team.id %}">
+                {{ team.name }}
+            </a>
+        </td>
+
+        <td>{{ team.location }}</td>
+
+        <td>
+            <a href="{% url 'team_edit' team.id %}">編集</a> |
+            <a href="{% url 'team_delete' team.id %}">削除</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="{% url 'team_create' %}">＋ 新規チーム登録</a>
+{% endblock %}

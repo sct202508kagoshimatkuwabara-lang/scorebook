@@ -1,0 +1,52 @@
+[
+  {
+    "model": "scores.game",
+    "pk": 1,
+    "fields": {
+      "game_date": "2025-03-01",
+      "team_home": 1,
+      "team_away": 2,
+      "first_batting": 1
+    }
+  },
+  {
+    "model": "scores.game",
+    "pk": 2,
+    "fields": {
+      "game_date": "2025-03-05",
+      "team_home": 3,
+      "team_away": 4,
+      "first_batting": 3
+    }
+  },
+  {
+    "model": "scores.game",
+    "pk": 3,
+    "fields": {
+      "game_date": "2025-03-10",
+      "team_home": 5,
+      "team_away": 6,
+      "first_batting": 5
+    }
+  },
+  {
+    "model": "scores.game",
+    "pk": 4,
+    "fields": {
+      "game_date": "2025-03-12",
+      "team_home": 7,
+      "team_away": 8,
+      "first_batting": 7
+    }
+  },
+  {
+    "model": "scores.game",
+    "pk": 5,
+    "fields": {
+      "game_date": "2025-03-15",
+      "team_home": 9,
+      "team_away": 10,
+      "first_batting": 9
+    }
+  }
+]

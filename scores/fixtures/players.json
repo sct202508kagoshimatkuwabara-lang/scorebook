@@ -1,0 +1,1298 @@
+[
+  {
+    "model": "players.player",
+    "pk": 1,
+    "fields": {
+      "team": 1,
+      "name": "松本 剛",
+      "birthday": null,
+      "jersey_number": 96,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 2,
+    "fields": {
+      "team": 1,
+      "name": "田中 正義",
+      "birthday": null,
+      "jersey_number": 91,
+      "default_position": 6,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 3,
+    "fields": {
+      "team": 1,
+      "name": "上沢 直之",
+      "birthday": null,
+      "jersey_number": 88,
+      "default_position": 6,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 4,
+    "fields": {
+      "team": 1,
+      "name": "加藤 貴之",
+      "birthday": null,
+      "jersey_number": 71,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 5,
+    "fields": {
+      "team": 1,
+      "name": "清宮 幸太郎",
+      "birthday": null,
+      "jersey_number": 10,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 6,
+    "fields": {
+      "team": 1,
+      "name": "野村 佑希",
+      "birthday": null,
+      "jersey_number": 24,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 7,
+    "fields": {
+      "team": 1,
+      "name": "万波 中正",
+      "birthday": null,
+      "jersey_number": 98,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 8,
+    "fields": {
+      "team": 1,
+      "name": "郡 拓也",
+      "birthday": null,
+      "jersey_number": 64,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 9,
+    "fields": {
+      "team": 1,
+      "name": "石井 一成",
+      "birthday": null,
+      "jersey_number": 33,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 10,
+    "fields": {
+      "team": 2,
+      "name": "浅村 栄斗",
+      "birthday": null,
+      "jersey_number": 16,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 11,
+    "fields": {
+      "team": 2,
+      "name": "岸 孝之",
+      "birthday": null,
+      "jersey_number": 40,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 12,
+    "fields": {
+      "team": 2,
+      "name": "早川 隆久",
+      "birthday": null,
+      "jersey_number": 46,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 13,
+    "fields": {
+      "team": 2,
+      "name": "炭谷 銀仁朗",
+      "birthday": null,
+      "jersey_number": 71,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 14,
+    "fields": {
+      "team": 2,
+      "name": "島内 宏明",
+      "birthday": null,
+      "jersey_number": 71,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 15,
+    "fields": {
+      "team": 2,
+      "name": "辰己 涼介",
+      "birthday": null,
+      "jersey_number": 78,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 16,
+    "fields": {
+      "team": 2,
+      "name": "田中 将大",
+      "birthday": null,
+      "jersey_number": 40,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 17,
+    "fields": {
+      "team": 2,
+      "name": "松井 裕樹",
+      "birthday": null,
+      "jersey_number": 24,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 18,
+    "fields": {
+      "team": 2,
+      "name": "小深田 大翔",
+      "birthday": null,
+      "jersey_number": 80,
+      "default_position": 6,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 19,
+    "fields": {
+      "team": 3,
+      "name": "山川 穂高",
+      "birthday": null,
+      "jersey_number": 97,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 20,
+    "fields": {
+      "team": 3,
+      "name": "源田 壮亮",
+      "birthday": null,
+      "jersey_number": 42,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 21,
+    "fields": {
+      "team": 3,
+      "name": "外崎 修汰",
+      "birthday": null,
+      "jersey_number": 68,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 22,
+    "fields": {
+      "team": 3,
+      "name": "平良 海馬",
+      "birthday": null,
+      "jersey_number": 17,
+      "default_position": 5,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 23,
+    "fields": {
+      "team": 3,
+      "name": "森 友哉",
+      "birthday": null,
+      "jersey_number": 83,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 24,
+    "fields": {
+      "team": 3,
+      "name": "今井 達也",
+      "birthday": null,
+      "jersey_number": 91,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 25,
+    "fields": {
+      "team": 3,
+      "name": "佐藤 龍世",
+      "birthday": null,
+      "jersey_number": 35,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 26,
+    "fields": {
+      "team": 3,
+      "name": "鈴木 将平",
+      "birthday": null,
+      "jersey_number": 78,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 27,
+    "fields": {
+      "team": 3,
+      "name": "蛭間 拓哉",
+      "birthday": null,
+      "jersey_number": 85,
+      "default_position": 5,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 28,
+    "fields": {
+      "team": 4,
+      "name": "佐々木 朗希",
+      "birthday": null,
+      "jersey_number": 97,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 29,
+    "fields": {
+      "team": 4,
+      "name": "千隼 佐藤",
+      "birthday": null,
+      "jersey_number": 94,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 30,
+    "fields": {
+      "team": 4,
+      "name": "小島 和哉",
+      "birthday": null,
+      "jersey_number": 92,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 31,
+    "fields": {
+      "team": 4,
+      "name": "松川 虎生",
+      "birthday": null,
+      "jersey_number": 26,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 32,
+    "fields": {
+      "team": 4,
+      "name": "中村 奨吾",
+      "birthday": null,
+      "jersey_number": 77,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 33,
+    "fields": {
+      "team": 4,
+      "name": "藤原 恭大",
+      "birthday": null,
+      "jersey_number": 88,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 34,
+    "fields": {
+      "team": 4,
+      "name": "山口 航輝",
+      "birthday": null,
+      "jersey_number": 54,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 35,
+    "fields": {
+      "team": 4,
+      "name": "岡 大海",
+      "birthday": null,
+      "jersey_number": 32,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 36,
+    "fields": {
+      "team": 4,
+      "name": "安田 尚憲",
+      "birthday": null,
+      "jersey_number": 71,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 37,
+    "fields": {
+      "team": 5,
+      "name": "山本 由伸",
+      "birthday": null,
+      "jersey_number": 93,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 38,
+    "fields": {
+      "team": 5,
+      "name": "宮城 大弥",
+      "birthday": null,
+      "jersey_number": 51,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 39,
+    "fields": {
+      "team": 5,
+      "name": "吉田 正尚",
+      "birthday": null,
+      "jersey_number": 6,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 40,
+    "fields": {
+      "team": 5,
+      "name": "杉本 裕太郎",
+      "birthday": null,
+      "jersey_number": 43,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 41,
+    "fields": {
+      "team": 5,
+      "name": "頓宮 裕真",
+      "birthday": null,
+      "jersey_number": 30,
+      "default_position": 5,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 42,
+    "fields": {
+      "team": 5,
+      "name": "福田 周平",
+      "birthday": null,
+      "jersey_number": 14,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 43,
+    "fields": {
+      "team": 5,
+      "name": "宗 佑磨",
+      "birthday": null,
+      "jersey_number": 34,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 44,
+    "fields": {
+      "team": 5,
+      "name": "紅林 弘太郎",
+      "birthday": null,
+      "jersey_number": 84,
+      "default_position": 5,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 45,
+    "fields": {
+      "team": 5,
+      "name": "中川 圭太",
+      "birthday": null,
+      "jersey_number": 70,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 46,
+    "fields": {
+      "team": 6,
+      "name": "柳田 悠岐",
+      "birthday": null,
+      "jersey_number": 77,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 47,
+    "fields": {
+      "team": 6,
+      "name": "今宮 健太",
+      "birthday": null,
+      "jersey_number": 49,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 48,
+    "fields": {
+      "team": 6,
+      "name": "甲斐 拓也",
+      "birthday": null,
+      "jersey_number": 35,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 49,
+    "fields": {
+      "team": 6,
+      "name": "千賀 滉大",
+      "birthday": null,
+      "jersey_number": 47,
+      "default_position": 5,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 50,
+    "fields": {
+      "team": 6,
+      "name": "東浜 巨",
+      "birthday": null,
+      "jersey_number": 67,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 51,
+    "fields": {
+      "team": 6,
+      "name": "栗原 陵矢",
+      "birthday": null,
+      "jersey_number": 21,
+      "default_position": 6,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 52,
+    "fields": {
+      "team": 6,
+      "name": "中村 晃",
+      "birthday": null,
+      "jersey_number": 65,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 53,
+    "fields": {
+      "team": 6,
+      "name": "牧原 大成",
+      "birthday": null,
+      "jersey_number": 52,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 54,
+    "fields": {
+      "team": 6,
+      "name": "近藤 健介",
+      "birthday": null,
+      "jersey_number": 82,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 55,
+    "fields": {
+      "team": 7,
+      "name": "坂本 勇人",
+      "birthday": null,
+      "jersey_number": 62,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 56,
+    "fields": {
+      "team": 7,
+      "name": "岡本 和真",
+      "birthday": null,
+      "jersey_number": 92,
+      "default_position": 6,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 57,
+    "fields": {
+      "team": 7,
+      "name": "戸郷 翔征",
+      "birthday": null,
+      "jersey_number": 3,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 58,
+    "fields": {
+      "team": 7,
+      "name": "菅野 智之",
+      "birthday": null,
+      "jersey_number": 78,
+      "default_position": 5,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 59,
+    "fields": {
+      "team": 7,
+      "name": "大城 卓三",
+      "birthday": null,
+      "jersey_number": 56,
+      "default_position": 5,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 60,
+    "fields": {
+      "team": 7,
+      "name": "丸 佳浩",
+      "birthday": null,
+      "jersey_number": 90,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 61,
+    "fields": {
+      "team": 7,
+      "name": "秋広 優人",
+      "birthday": null,
+      "jersey_number": 11,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 62,
+    "fields": {
+      "team": 7,
+      "name": "中田 翔",
+      "birthday": null,
+      "jersey_number": 80,
+      "default_position": 5,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 63,
+    "fields": {
+      "team": 7,
+      "name": "ウォーカー",
+      "birthday": null,
+      "jersey_number": 18,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 64,
+    "fields": {
+      "team": 8,
+      "name": "村上 宗隆",
+      "birthday": null,
+      "jersey_number": 2,
+      "default_position": 5,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 65,
+    "fields": {
+      "team": 8,
+      "name": "山田 哲人",
+      "birthday": null,
+      "jersey_number": 48,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 66,
+    "fields": {
+      "team": 8,
+      "name": "青木 宣親",
+      "birthday": null,
+      "jersey_number": 42,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 67,
+    "fields": {
+      "team": 8,
+      "name": "小川 泰弘",
+      "birthday": null,
+      "jersey_number": 35,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 68,
+    "fields": {
+      "team": 8,
+      "name": "高橋 奎二",
+      "birthday": null,
+      "jersey_number": 33,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 69,
+    "fields": {
+      "team": 8,
+      "name": "中村 悠平",
+      "birthday": null,
+      "jersey_number": 51,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 70,
+    "fields": {
+      "team": 8,
+      "name": "塩見 泰隆",
+      "birthday": null,
+      "jersey_number": 53,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 71,
+    "fields": {
+      "team": 8,
+      "name": "オスナ",
+      "birthday": null,
+      "jersey_number": 92,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 72,
+    "fields": {
+      "team": 8,
+      "name": "サンタナ",
+      "birthday": null,
+      "jersey_number": 93,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 73,
+    "fields": {
+      "team": 9,
+      "name": "佐野 恵太",
+      "birthday": null,
+      "jersey_number": 48,
+      "default_position": 5,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 74,
+    "fields": {
+      "team": 9,
+      "name": "宮﨑 敏郎",
+      "birthday": null,
+      "jersey_number": 34,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 75,
+    "fields": {
+      "team": 9,
+      "name": "今永 昇太",
+      "birthday": null,
+      "jersey_number": 17,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 76,
+    "fields": {
+      "team": 9,
+      "name": "山﨑 康晃",
+      "birthday": null,
+      "jersey_number": 60,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 77,
+    "fields": {
+      "team": 9,
+      "name": "大田 泰示",
+      "birthday": null,
+      "jersey_number": 99,
+      "default_position": 6,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 78,
+    "fields": {
+      "team": 9,
+      "name": "桑原 将志",
+      "birthday": null,
+      "jersey_number": 29,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 79,
+    "fields": {
+      "team": 9,
+      "name": "牧 秀悟",
+      "birthday": null,
+      "jersey_number": 17,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 80,
+    "fields": {
+      "team": 9,
+      "name": "伊藤 裕季也",
+      "birthday": null,
+      "jersey_number": 27,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 81,
+    "fields": {
+      "team": 9,
+      "name": "関根 大気",
+      "birthday": null,
+      "jersey_number": 94,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 82,
+    "fields": {
+      "team": 10,
+      "name": "大野 雄大",
+      "birthday": null,
+      "jersey_number": 33,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 83,
+    "fields": {
+      "team": 10,
+      "name": "柳 裕也",
+      "birthday": null,
+      "jersey_number": 11,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 84,
+    "fields": {
+      "team": 10,
+      "name": "髙橋 宏斗",
+      "birthday": null,
+      "jersey_number": 83,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 85,
+    "fields": {
+      "team": 10,
+      "name": "岡林 勇希",
+      "birthday": null,
+      "jersey_number": 46,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 86,
+    "fields": {
+      "team": 10,
+      "name": "木下 拓哉",
+      "birthday": null,
+      "jersey_number": 88,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 87,
+    "fields": {
+      "team": 10,
+      "name": "ビシエド",
+      "birthday": null,
+      "jersey_number": 2,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 88,
+    "fields": {
+      "team": 10,
+      "name": "周平 高橋",
+      "birthday": null,
+      "jersey_number": 21,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 89,
+    "fields": {
+      "team": 10,
+      "name": "阿部 寿樹",
+      "birthday": null,
+      "jersey_number": 33,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 90,
+    "fields": {
+      "team": 10,
+      "name": "細川 成也",
+      "birthday": null,
+      "jersey_number": 28,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 91,
+    "fields": {
+      "team": 11,
+      "name": "近本 光司",
+      "birthday": null,
+      "jersey_number": 9,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 92,
+    "fields": {
+      "team": 11,
+      "name": "大山 悠輔",
+      "birthday": null,
+      "jersey_number": 83,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 93,
+    "fields": {
+      "team": 11,
+      "name": "佐藤 輝明",
+      "birthday": null,
+      "jersey_number": 69,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 94,
+    "fields": {
+      "team": 11,
+      "name": "西 勇輝",
+      "birthday": null,
+      "jersey_number": 75,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 95,
+    "fields": {
+      "team": 11,
+      "name": "伊藤 将司",
+      "birthday": null,
+      "jersey_number": 73,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 96,
+    "fields": {
+      "team": 11,
+      "name": "中野 拓夢",
+      "birthday": null,
+      "jersey_number": 70,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 97,
+    "fields": {
+      "team": 11,
+      "name": "梅野 隆太郎",
+      "birthday": null,
+      "jersey_number": 8,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 98,
+    "fields": {
+      "team": 11,
+      "name": "青柳 晃洋",
+      "birthday": null,
+      "jersey_number": 40,
+      "default_position": 8,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 99,
+    "fields": {
+      "team": 11,
+      "name": "森下 翔太",
+      "birthday": null,
+      "jersey_number": 19,
+      "default_position": 3,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 100,
+    "fields": {
+      "team": 12,
+      "name": "鈴木 誠也",
+      "birthday": null,
+      "jersey_number": 97,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 101,
+    "fields": {
+      "team": 12,
+      "name": "西川 龍馬",
+      "birthday": null,
+      "jersey_number": 15,
+      "default_position": 4,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 102,
+    "fields": {
+      "team": 12,
+      "name": "森下 暢仁",
+      "birthday": null,
+      "jersey_number": 83,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 103,
+    "fields": {
+      "team": 12,
+      "name": "會澤 翼",
+      "birthday": null,
+      "jersey_number": 61,
+      "default_position": 6,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 104,
+    "fields": {
+      "team": 12,
+      "name": "坂倉 将吾",
+      "birthday": null,
+      "jersey_number": 86,
+      "default_position": 7,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 105,
+    "fields": {
+      "team": 12,
+      "name": "小園 海斗",
+      "birthday": null,
+      "jersey_number": 84,
+      "default_position": 1,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 106,
+    "fields": {
+      "team": 12,
+      "name": "秋山 翔吾",
+      "birthday": null,
+      "jersey_number": 85,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 107,
+    "fields": {
+      "team": 12,
+      "name": "野間 峻祥",
+      "birthday": null,
+      "jersey_number": 26,
+      "default_position": 9,
+      "comment": "デバッグ用選手"
+    }
+  },
+  {
+    "model": "players.player",
+    "pk": 108,
+    "fields": {
+      "team": 12,
+      "name": "菊池 涼介",
+      "birthday": null,
+      "jersey_number": 63,
+      "default_position": 2,
+      "comment": "デバッグ用選手"
+    }
+  }
+]
