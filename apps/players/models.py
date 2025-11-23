@@ -43,6 +43,10 @@ class Player(models.Model):
     comment = models.TextField(blank=True)
 
     # --- 管理画面や一覧での表示 ---
+    class Meta:
+        verbose_name = "選手"
+        verbose_name_plural = "選手一覧"
+
     def __str__(self):
         # 例：大谷翔平（北海道日本ハムファイターズ）
         return f"{self.name}（{self.team.name}）"

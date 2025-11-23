@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>試合フォーム</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <button type="submit">保存</button>
+</form>
+
+<br>
+<a href="{% url 'games:game_list' %}">← 戻る</a>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>試合一覧</h2>
+
+<a href="{% url 'games:game_add' %}">＋ 試合追加</a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>大会名</th>
+        <th>日時</th>
+        <th>球場</th>
+        <th>天候</th>
+        <th>先攻</th>
+        <th>後攻</th>
+        <th>操作</th>
+    </tr>
+
+    {% for g in games %}
+    <tr>
+        <td>{{ g.tournament }}</td>
+        <td>{{ g.game_datetime|date:"Y/m/d H:i" }}</td>
+        <td>{{ g.ballpark }}</td>
+        <td>{{ g.get_weather_display }}</td>
+        <td>{{ g.first_batting }}</td>
+        <td>{{ g.second_batting }}</td>
+        <td>
+            <a href="{% url 'games:game_edit' g.pk %}">編集</a> |
+            <a href="{% url 'games:game_delete' g.pk %}">削除</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

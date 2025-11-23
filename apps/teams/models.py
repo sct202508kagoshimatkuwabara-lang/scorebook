@@ -11,6 +11,10 @@ class Team(models.Model):
     # True のチームがアプリ内の「ホーム扱い」になる
     is_home_team = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name = "チーム"
+        verbose_name_plural = "チーム一覧"
+
     def __str__(self):
         # 管理画面などで表示するときの名称
         return self.name
