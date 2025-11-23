@@ -1,0 +1,110 @@
+[
+  {
+    "model": "teams.team",
+    "pk": 1,
+    "fields": {
+      "name": "北海道日本ハムファイターズ",
+      "location": "北海道（エスコンフィールドHOKKAIDO）",
+      "is_home_team": true
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 2,
+    "fields": {
+      "name": "東北楽天ゴールデンイーグルス",
+      "location": "宮城県（楽天モバイルパーク宮城）",
+      "is_home_team": false
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 3,
+    "fields": {
+      "name": "埼玉西武ライオンズ",
+      "location": "埼玉県（ベルーナドーム）",
+      "is_home_team": false
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 4,
+    "fields": {
+      "name": "千葉ロッテマリーンズ",
+      "location": "千葉県（ZOZOマリンスタジアム）",
+      "is_home_team": false
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 5,
+    "fields": {
+      "name": "オリックス・バファローズ",
+      "location": "大阪府（京セラドーム大阪）",
+      "is_home_team": false
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 6,
+    "fields": {
+      "name": "福岡ソフトバンクホークス",
+      "location": "福岡県（みずほPayPayドーム福岡）",
+      "is_home_team": false
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 7,
+    "fields": {
+      "name": "読売ジャイアンツ",
+      "location": "東京都（東京ドーム）",
+      "is_home_team": false
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 8,
+    "fields": {
+      "name": "東京ヤクルトスワローズ",
+      "location": "東京都（明治神宮野球場）",
+      "is_home_team": false
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 9,
+    "fields": {
+      "name": "横浜DeNAベイスターズ",
+      "location": "神奈川県（横浜スタジアム）",
+      "is_home_team": false
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 10,
+    "fields": {
+      "name": "中日ドラゴンズ",
+      "location": "愛知県（バンテリンドーム ナゴヤ）",
+      "is_home_team": false
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 11,
+    "fields": {
+      "name": "阪神タイガース",
+      "location": "兵庫県（阪神甲子園球場）",
+      "is_home_team": false
+    }
+  },
+  {
+    "model": "teams.team",
+    "pk": 12,
+    "fields": {
+      "name": "広島東洋カープ",
+      "location": "広島県（MAZDA Zoom-Zoom スタジアム広島）",
+      "is_home_team": false
+    }
+  }
+]

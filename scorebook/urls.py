@@ -5,11 +5,11 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     # ホームは scores の home
-    path("", include("scores.urls")),
+    path("", include("apps.scores.urls")),
 
     # チーム管理
-    path("teams/", include("teams.urls")),
+    path("teams/", include("apps.teams.urls")),
 
     # 選手管理
-    path("players/", include("players.urls")),
+    path("players/", include("apps.players.urls")),
 ]
