@@ -1,0 +1,79 @@
+<tr class="pitch-row">
+
+    <!-- 打者（氏名プルダウン） -->
+    <td>
+        <select class="batter">
+            <option value="">--打者--</option>
+            {% for player in players %}
+                <option value="{{ player.id }}">
+                    {{ player.team.name }}：{{ player.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </td>
+
+    <!-- 投手（氏名プルダウン） -->
+    <td>
+        <select class="pitcher">
+            <option value="">--投手--</option>
+            {% for player in players %}
+                <option value="{{ player.id }}">
+                    {{ player.team.name }}：{{ player.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </td>
+
+    <!-- batter_result（英語キー送信・日本語表示） -->
+    <td>
+        <select class="batter_result">
+            <option value="">--結果--</option>
+
+            <!-- OUT -->
+            <option value="strikeout">三振</option>
+            <option value="fly">フライ</option>
+            <option value="groundout">ゴロアウト</option>
+            <option value="lineout">ライナーアウト</option>
+            <option value="double_play">併殺</option>
+
+            <!-- NON-OUT -->
+            <option value="single">単打</option>
+            <option value="double">二塁打</option>
+            <option value="triple">三塁打</option>
+            <option value="homerun">本塁打</option>
+            <option value="walk">四球</option>
+            <option value="deadball">死球</option>
+            <option value="error">エラー</option>
+            <option value="fielder_choice">野選</option>
+        </select>
+    </td>
+
+    <!-- runner_action -->
+    <td>
+        <select class="runner_action">
+            <option value="">--走者--</option>
+            <option value="none">なし</option>
+            <option value="advance_1">1つ進塁</option>
+            <option value="advance_2">2つ進塁</option>
+            <option value="advance_3">3つ進塁</option>
+            <option value="score">生還</option>
+            <option value="out_on_base">走塁死</option>
+        </select>
+    </td>
+
+    <!-- pitch_result -->
+    <td>
+        <select class="pitch_result">
+            <option value="">--投球--</option>
+            <option value="ball">ボール</option>
+            <option value="strike">ストライク</option>
+            <option value="foul">ファウル</option>
+            <option value="inplay">インプレー</option>
+        </select>
+    </td>
+
+    <!-- 保存ボタン -->
+    <td>
+        <button type="button" class="save-btn">保存</button>
+    </td>
+</tr>

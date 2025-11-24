@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h2>スコア入力：{{ game }}</h2>
+
+<!-- JSで使うゲームID -->
+<input type="hidden" id="game-id" value="{{ game.id }}">
+
+<div style="margin-bottom: 20px;">
+    <button type="button" id="add-row-btn">＋ 行を追加</button>
+</div>
+
+<table border="1" cellpadding="4" cellspacing="0">
+    <thead>
+        <tr>
+            <th>打者ID</th>
+            <th>投手ID</th>
+            <th>打者結果</th>
+            <th>走者動作</th>
+            <th>投球種別</th>
+            <th>-</th>
+        </tr>
+    </thead>
+
+    <tbody id="input-rows">
+        {% include "games/score_input/components/row.html" %}
+    </tbody>
+</table>
+
+<hr>
+
+<h3>最新 10 件</h3>
+<ul id="recent-list">
+    {% for p in recent_pitches %}
+        <li>
+            {{ p.inning }}回（{{ p.top_bottom }}）
+            打者：{{ p.batter.name }}
+            投手：{{ p.pitcher.name }}
+            → 結果：{{ p.batter_result }}
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- JS -->
+<script src="{% static 'games/score_input.js' %}"></script>
+
+{% endblock %}

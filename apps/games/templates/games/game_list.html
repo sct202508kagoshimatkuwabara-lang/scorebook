@@ -1,34 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>試合一覧</h2>
 
-<a href="{% url 'games:game_add' %}">＋ 試合追加</a>
+<h2 class="mb-4">試合一覧</h2>
 
-<table border="1" cellpadding="5" cellspacing="0">
-    <tr>
-        <th>大会名</th>
-        <th>日時</th>
-        <th>球場</th>
-        <th>天候</th>
-        <th>先攻</th>
-        <th>後攻</th>
-        <th>操作</th>
-    </tr>
+<a href="{% url 'games:game_add' %}" class="btn btn-primary mb-3">＋ 新規試合</a>
 
-    {% for g in games %}
-    <tr>
-        <td>{{ g.tournament }}</td>
-        <td>{{ g.game_datetime|date:"Y/m/d H:i" }}</td>
-        <td>{{ g.ballpark }}</td>
-        <td>{{ g.get_weather_display }}</td>
-        <td>{{ g.first_batting }}</td>
-        <td>{{ g.second_batting }}</td>
-        <td>
-            <a href="{% url 'games:game_edit' g.pk %}">編集</a> |
-            <a href="{% url 'games:game_delete' g.pk %}">削除</a>
-        </td>
-    </tr>
-    {% endfor %}
+<table class="table table-striped table-bordered" border="1">
+    <thead>
+        <tr>
+            <th>日時</th>
+            <th>大会名</th>
+            <th>球場</th>
+            <th>先攻</th>
+            <th>後攻</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for game in games %}
+        <tr>
+            <td>{{ game.game_datetime|date:"Y-m-d H:i" }}</td>
+            <td>{{ game.tournament }}</td>
+            <td>{{ game.ballpark }}</td>
+            <td>{{ game.first_batting }}</td>
+            <td>{{ game.second_batting }}</td>
+            <td>
+                <a href="{% url 'games:score_top' game.pk %}" class="btn btn-success btn-sm">スコア</a>
+                <a href="{% url 'games:game_edit' game.pk %}" class="btn btn-warning btn-sm">編集</a>
+                <a href="{% url 'games:game_delete' game.pk %}" class="btn btn-danger btn-sm">削除</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">試合データがありません。</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
 {% endblock %}

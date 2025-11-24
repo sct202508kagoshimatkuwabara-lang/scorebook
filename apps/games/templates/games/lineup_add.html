@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ team.name }} メンバー表（1〜9番）</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <table class="table">
+        <tr>
+            <th>打順</th>
+            <th>選手</th>
+            <th>守備位置</th>
+        </tr>
+
+        {% for row in lineup_data %}
+        <tr>
+            <td>{{ row.order }}</td>
+
+            <!-- 選手選択 -->
+            <td>
+                <select name="player_{{ row.order }}" class="form-control">
+                    <option value="">-----</option>
+                    {% for p in players %}
+                        <option value="{{ p.id }}" {% if p.id == row.player %}selected{% endif %}>
+                            {{ p.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+
+            <!-- 守備選択 -->
+             <td>
+                <select name="position_{{ row.order }}" class="form-control">
+                    <option value="">-----</option>
+                    {% for val,label in position_choices %}
+                        <option value="{{ val }}" {% if val == row.position %}selected{% endif %}>
+                            {{ label }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <button type="submit" class="btn btn-primary btn-lg">保存</button>
+</form>
+
+{% endblock %}

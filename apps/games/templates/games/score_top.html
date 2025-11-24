@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>スコア入力メニュー：{{ game }}</h2>
+
+<hr>
+
+<h3>メンバー表入力</h3>
+<ul>
+    <li>
+        <a href="{% url 'games:lineup_add' game.id game.first_batting.id %}">
+            先攻チーム（{{ game.first_batting.name }}) のメンバー入力
+        </a>
+    </li>
+
+    <li>
+        <a href="{% url 'games:lineup_add' game.id game.second_batting.id %}">
+            後攻チーム（{{ game.second_batting.name }}) のメンバー入力
+        </a>
+    </li>
+</ul>
+
+<hr>
+
+<h3>スコア入力</h3>
+<p>
+    投球結果の入力へ進みます。  
+    イニングは自動判定されます。
+</p>
+
+<a href="{% url 'games:score_input' game.id %}"
+   style="display:inline-block; padding:10px 20px; background:#0a74da; color:white; text-decoration:none; border-radius:4px;">
+    ▶ スコア入力へ
+</a>
+
+<hr>
+
+<h3>（旧）投球開始画面</h3>
+<p>※必要なければ削除してもOK</p>
+<a href="{% url 'games:pitch_start' game.id %}">
+    pitch_start 画面へ
+</a>
+
+{% endblock %}
