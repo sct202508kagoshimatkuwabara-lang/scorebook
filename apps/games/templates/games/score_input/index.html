@@ -3,30 +3,39 @@
 
 {% block content %}
 
-<h2>スコア入力：{{ game }}</h2>
+<h2>スコア入力：</h2>
 
-<!-- JSで使うゲームID -->
-<input type="hidden" id="game-id" value="{{ game.id }}">
-
-<div style="margin-bottom: 20px;">
-    <button type="button" id="add-row-btn">＋ 行を追加</button>
+<div style="margin-bottom: 10px; font-size: 18px; line-height: 1.6;">
+    {{ game.game_datetime|date:"Y-m-d H:i" }}〜
+    <br><br>
+    {{ game.first_batting.name }}
+    <br>
+    vs {{ game.second_batting.name }}
 </div>
 
-<table border="1" cellpadding="4" cellspacing="0">
+<hr>
+
+<script id="lineup-data" type="application/json">
+    {{ lineup_json|safe }}
+</script>
+
+<button id="add-row-btn"
+        style="padding:8px 16px; margin-bottom:15px; background:#0a74da; color:white; border-radius:4px;">
+    ＋ 行を追加
+</button>
+
+<table id="pitch-table" border="1" cellspacing="0" cellpadding="6">
     <thead>
         <tr>
-            <th>打者ID</th>
-            <th>投手ID</th>
+            <th>打者</th>
+            <th>投手</th>
             <th>打者結果</th>
             <th>走者動作</th>
-            <th>投球種別</th>
+            <th>投球</th>
             <th>-</th>
         </tr>
     </thead>
-
-    <tbody id="input-rows">
-        {% include "games/score_input/components/row.html" %}
-    </tbody>
+    <tbody id="pitch-body"></tbody>
 </table>
 
 <hr>
@@ -43,7 +52,9 @@
     {% endfor %}
 </ul>
 
-<!-- JS -->
-<script src="{% static 'games/score_input.js' %}"></script>
+<script id="row-template" type="text/template">
+    {% include "games/score_input/row.html" %}
+</script>
 
+<script src="{% static 'games/score_input/score_input.js' %}"></script>
 {% endblock %}

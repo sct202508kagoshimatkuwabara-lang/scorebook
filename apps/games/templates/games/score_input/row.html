@@ -1,30 +1,18 @@
 <tr class="pitch-row">
 
-    <!-- 打者（氏名プルダウン） -->
-    <td>
-        <select class="batter">
-            <option value="">--打者--</option>
-            {% for player in players %}
-                <option value="{{ player.id }}">
-                    {{ player.team.name }}：{{ player.name }}
-                </option>
-            {% endfor %}
-        </select>
+    <!-- 打者（読み取り専用。JSが lineup_json から挿入する） -->
+    <td class="batter-cell">
+        <span class="batter-name"></span>
+        <input type="hidden" class="batter-id">
     </td>
 
-    <!-- 投手（氏名プルダウン） -->
-    <td>
-        <select class="pitcher">
-            <option value="">--投手--</option>
-            {% for player in players %}
-                <option value="{{ player.id }}">
-                    {{ player.team.name }}：{{ player.name }}
-                </option>
-            {% endfor %}
-        </select>
+    <!-- 投手（読み取り専用。JSが lineup_json から挿入する） -->
+    <td class="pitcher-cell">
+        <span class="pitcher-name"></span>
+        <input type="hidden" class="pitcher-id">
     </td>
 
-    <!-- batter_result（英語キー送信・日本語表示） -->
+    <!-- 打者結果 -->
     <td>
         <select class="batter_result">
             <option value="">--結果--</option>
@@ -36,11 +24,13 @@
             <option value="lineout">ライナーアウト</option>
             <option value="double_play">併殺</option>
 
-            <!-- NON-OUT -->
+            <!-- 塁打系 -->
             <option value="single">単打</option>
             <option value="double">二塁打</option>
             <option value="triple">三塁打</option>
             <option value="homerun">本塁打</option>
+
+            <!-- 出塁 -->
             <option value="walk">四球</option>
             <option value="deadball">死球</option>
             <option value="error">エラー</option>
@@ -48,7 +38,7 @@
         </select>
     </td>
 
-    <!-- runner_action -->
+    <!-- 走者動作 -->
     <td>
         <select class="runner_action">
             <option value="">--走者--</option>
@@ -61,7 +51,7 @@
         </select>
     </td>
 
-    <!-- pitch_result -->
+    <!-- 投球種別 -->
     <td>
         <select class="pitch_result">
             <option value="">--投球--</option>
@@ -76,4 +66,5 @@
     <td>
         <button type="button" class="save-btn">保存</button>
     </td>
+
 </tr>

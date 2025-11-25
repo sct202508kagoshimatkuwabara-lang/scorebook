@@ -1,0 +1,67 @@
+[
+    {
+        "model": "scores.pitch",
+        "pk": 1,
+        "fields": {
+            "game": 1,
+            "inning": 1,
+            "top_bottom": "top",
+
+            "pitcher": 10,
+            "catcher": 11,
+            "first": 12,
+            "second": 13,
+            "third": 14,
+            "short": 15,
+            "left": 16,
+            "center": 17,
+            "right": 18,
+
+            "hitter": 1,
+            "batting_order": 1,
+
+            "atbat_result": null,
+            "pitch_result": "strike",
+            "pitch_number": 1,
+
+            "runner_1b": null,
+            "runner_2b": null,
+            "runner_3b": null,
+
+            "created_at": "2025-03-25T09:00:00Z"
+        }
+    },
+
+    {
+        "model": "scores.pitch",
+        "pk": 2,
+        "fields": {
+            "game": 1,
+            "inning": 1,
+            "top_bottom": "top",
+
+            "pitcher": 10,
+            "catcher": 11,
+            "first": 12,
+            "second": 13,
+            "third": 14,
+            "short": 15,
+            "left": 16,
+            "center": 17,
+            "right": 18,
+
+            "hitter": 2,
+            "batting_order": 2,
+
+            "atbat_result": "groundout",
+            "pitch_result": "inplay",
+            "pitch_number": 2,
+
+            "runner_1b": null,
+            "runner_2b": null,
+            "runner_3b": null,
+
+            "created_at": "2025-03-25T09:00:05Z"
+        }
+    }
+]

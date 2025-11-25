@@ -1,26 +1,109 @@
+# apps/scores/models.py
 from django.db import models
 from apps.games.models import Game, Lineup
+from apps.players.models import Player
+
 
 class Pitch(models.Model):
     """
-    1球ごとの記録。
-    1球＝1レコードになるイメージ。
+    1球の記録
     """
+
+    # ① 試合
     game = models.ForeignKey(
         Game,
         related_name="pitches",
         on_delete=models.CASCADE
     )
 
-    # 今どの打順を記録しているか（1〜9）
-    batting_order = models.PositiveSmallIntegerField()
+    # ② イニング（1〜）
+    inning = models.PositiveSmallIntegerField(default=1)
 
-    # この打席の打者（Lineup から取得）
-    hitter = models.ForeignKey(
-        Lineup, on_delete=models.CASCADE, null=True, blank=True
+    # ③ 表 / 裏
+    top_bottom = models.CharField(
+        max_length=6,
+        choices=[
+            ("top", "表"),
+            ("bottom", "裏"),
+        ]
     )
 
-    # 投球結果（BALL / STRIKE / FOUL / INPLAY / HIT など）
+    # ④ 守備9人 ————（投手だけ必須、他は任意）
+    pitcher = models.ForeignKey(
+        Player,
+        related_name="pitcher_pitches",
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
+    )
+    catcher = models.ForeignKey(
+        Player,
+        related_name="catcher_pitches",
+        on_delete=models.PROTECT,
+        null=True, blank=True
+    )
+    first = models.ForeignKey(
+        Player,
+        related_name="first_pitches",
+        on_delete=models.PROTECT,
+        null=True, blank=True
+    )
+    second = models.ForeignKey(
+        Player,
+        related_name="second_pitches",
+        on_delete=models.PROTECT,
+        null=True, blank=True
+    )
+    third = models.ForeignKey(
+        Player,
+        related_name="third_pitches",
+        on_delete=models.PROTECT,
+        null=True, blank=True
+    )
+    short = models.ForeignKey(
+        Player,
+        related_name="short_pitches",
+        on_delete=models.PROTECT,
+        null=True, blank=True
+    )
+    left = models.ForeignKey(
+        Player,
+        related_name="left_pitches",
+        on_delete=models.PROTECT,
+        null=True, blank=True
+    )
+    center = models.ForeignKey(
+        Player,
+        related_name="center_pitches",
+        on_delete=models.PROTECT,
+        null=True, blank=True
+    )
+    right = models.ForeignKey(
+        Player,
+        related_name="right_pitches",
+        on_delete=models.PROTECT,
+        null=True, blank=True
+    )
+
+    # ⑤ 打者（Lineup に紐付く）
+    hitter = models.ForeignKey(
+        Lineup,
+        related_name="hitter_pitches",
+        on_delete=models.PROTECT,
+        null=False
+    )
+
+    # ※ 打順（1〜9）
+    batting_order = models.PositiveSmallIntegerField()
+
+    # ⑥ 打者結果（打席終了時にだけ値が入る）
+    atbat_result = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True
+    )
+
+    # ⑦ 投球結果
     pitch_result = models.CharField(
         max_length=20,
         choices=[
@@ -28,38 +111,32 @@ class Pitch(models.Model):
             ("strike", "ストライク"),
             ("foul", "ファウル"),
             ("inplay", "インプレー"),
-            ("hit", "ヒット"),
-            ("out", "アウト"),
         ]
     )
 
-    # 打席が終了したときだけ埋まる「最終結果」
-    # （三振、四球、ゴロアウト、内野安打、二塁打など）
-    atbat_result = models.CharField(
-        max_length=20,
-        blank=True,
-        null=True
-    )
-
-    # どの投球番号か（1球目＝1）
+    # 投球番号（1球目＝1）
     pitch_number = models.PositiveIntegerField()
 
-    # 回（1〜9） ※ 途中延長は必要に応じて増やす
-    inning = models.PositiveIntegerField(default=1)
-
-    # 表 or 裏
-    top_bottom = models.CharField(
-        max_length=6,   # ← 修正！
-        choices=[
-            ("top", "表"),
-            ("bottom", "裏"),
-        ]
+    # ⑧ ランナー状況
+    runner_1b = models.ForeignKey(
+        Player, related_name="on_first",
+        null=True, blank=True, on_delete=models.SET_NULL
+    )
+    runner_2b = models.ForeignKey(
+        Player, related_name="on_second",
+        null=True, blank=True, on_delete=models.SET_NULL
+    )
+    runner_3b = models.ForeignKey(
+        Player, related_name="on_third",
+        null=True, blank=True, on_delete=models.SET_NULL
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ["game", "inning", "pitch_number"]
+        verbose_name = "スコア"
+        verbose_name_plural = "スコア一覧"
 
     def __str__(self):
         return f"{self.game} {self.inning}回{self.top_bottom} {self.pitch_number}球"

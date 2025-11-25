@@ -16,7 +16,7 @@ urlpatterns = [
     # メンバー表（先攻・後攻）
     path("<int:game_id>/lineup/<int:team_id>/", views.lineup_add, name="lineup_add"),
 
-    # 投球開始（既存）
+    # （旧）投球開始
     path("<int:pk>/pitch/", views.pitch_start, name="pitch_start"),
 
     # ★ スコア入力画面（今回のメイン）
@@ -24,4 +24,7 @@ urlpatterns = [
 
     # ★ 投球保存（AJAX）
     path("<int:pk>/score_input/save/", views_score_input.save_pitch, name="score_input_save"),
+
+    # ★ 最後の投球（最新の1行）削除（AJAX）
+    # path("<int:pk>/score_input/delete_last/", views_score_input.delete_last_pitch, name="score_input_delete_last"),
 ]

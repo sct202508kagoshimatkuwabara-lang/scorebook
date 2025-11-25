@@ -1,0 +1,201 @@
+[
+  {
+    "model": "games.lineup",
+    "pk": 1,
+    "fields": {
+      "game": 1,
+      "team": 1,
+      "batting_order": 1,
+      "position": 1,
+      "player": 1
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 2,
+    "fields": {
+      "game": 1,
+      "team": 1,
+      "batting_order": 2,
+      "position": 2,
+      "player": 2
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 3,
+    "fields": {
+      "game": 1,
+      "team": 1,
+      "batting_order": 3,
+      "position": 3,
+      "player": 3
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 4,
+    "fields": {
+      "game": 1,
+      "team": 1,
+      "batting_order": 4,
+      "position": 4,
+      "player": 4
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 5,
+    "fields": {
+      "game": 1,
+      "team": 1,
+      "batting_order": 5,
+      "position": 5,
+      "player": 5
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 6,
+    "fields": {
+      "game": 1,
+      "team": 1,
+      "batting_order": 6,
+      "position": 6,
+      "player": 6
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 7,
+    "fields": {
+      "game": 1,
+      "team": 1,
+      "batting_order": 7,
+      "position": 7,
+      "player": 7
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 8,
+    "fields": {
+      "game": 1,
+      "team": 1,
+      "batting_order": 8,
+      "position": 8,
+      "player": 8
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 9,
+    "fields": {
+      "game": 1,
+      "team": 1,
+      "batting_order": 9,
+      "position": 9,
+      "player": 9
+    }
+  },
+
+  {
+    "model": "games.lineup",
+    "pk": 10,
+    "fields": {
+      "game": 1,
+      "team": 2,
+      "batting_order": 1,
+      "position": 1,
+      "player": 10
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 11,
+    "fields": {
+      "game": 1,
+      "team": 2,
+      "batting_order": 2,
+      "position": 2,
+      "player": 11
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 12,
+    "fields": {
+      "game": 1,
+      "team": 2,
+      "batting_order": 3,
+      "position": 3,
+      "player": 12
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 13,
+    "fields": {
+      "game": 1,
+      "team": 2,
+      "batting_order": 4,
+      "position": 4,
+      "player": 13
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 14,
+    "fields": {
+      "game": 1,
+      "team": 2,
+      "batting_order": 5,
+      "position": 5,
+      "player": 14
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 15,
+    "fields": {
+      "game": 1,
+      "team": 2,
+      "batting_order": 6,
+      "position": 6,
+      "player": 15
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 16,
+    "fields": {
+      "game": 1,
+      "team": 2,
+      "batting_order": 7,
+      "position": 7,
+      "player": 16
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 17,
+    "fields": {
+      "game": 1,
+      "team": 2,
+      "batting_order": 8,
+      "position": 8,
+      "player": 17
+    }
+  },
+  {
+    "model": "games.lineup",
+    "pk": 18,
+    "fields": {
+      "game": 1,
+      "team": 2,
+      "batting_order": 9,
+      "position": 9,
+      "player": 18
+    }
+  }
+]
