@@ -1,17 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>試合フォーム</h2>
 
-<form method="POST">
+<h2 class="mb-4">試合概要</h2>
+
+<form method="post">
     {% csrf_token %}
-    <table>
-        {{ form.as_table }}
+
+    <table class="table table-bordered">
+        <tr>
+            <th>試合日時</th>
+            <td>{{ form.game_datetime }}</td>
+        </tr>
+        <tr>
+            <th>大会名</th>
+            <td>{{ form.tournament }}</td>
+        </tr>
+        <tr>
+            <th>球場名</th>
+            <td>{{ form.ballpark }}</td>
+        </tr>
+        <tr>
+            <th>天候</th>
+            <td>{{ form.weather }}</td>
+        </tr>
+        <tr>
+            <th>先攻チーム</th>
+            <td>{{ form.first_batting }}</td>
+        </tr>
+        <tr>
+            <th>後攻チーム</th>
+            <td>{{ form.second_batting }}</td>
+        </tr>
     </table>
 
-    <button type="submit">保存</button>
+    <button type="submit" class="btn btn-primary">保存</button>
+    <a href="{% url 'games:game_list' %}" class="btn btn-secondary">戻る</a>
 </form>
-
-<br>
-<a href="{% url 'games:game_list' %}">← 戻る</a>
 
 {% endblock %}

@@ -7,7 +7,7 @@ from .models import Game, Lineup, Inning
 class LineupAdmin(admin.ModelAdmin):
     list_display = (
         "id",
-        "game",
+        "game_id_display",
         "team",
         "batting_order",
         "player",
@@ -15,6 +15,11 @@ class LineupAdmin(admin.ModelAdmin):
     )
     list_filter = ("game", "team", "position")
     search_fields = ("player__name",)
+
+    @admin.display(description="Game ID")
+    def game_id_display(self, obj):
+        return obj.game_id
+
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
@@ -27,6 +32,7 @@ class GameAdmin(admin.ModelAdmin):
     )
     list_filter = ("game_datetime", "first_batting", "second_batting")
     search_fields = ("tournament",)
+
 
 @admin.register(Inning)
 class InningAdmin(admin.ModelAdmin):

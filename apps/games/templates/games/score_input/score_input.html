@@ -15,8 +15,14 @@
 
 <hr>
 
+<!-- lineup -->
 <script id="lineup-data" type="application/json">
     {{ lineup_json|safe }}
+</script>
+
+<!-- ★JS が読みに行く ID を existing-pitches に統一 -->
+<script id="existing-pitches" type="application/json">
+    {{ recent_pitches_json|safe }}
 </script>
 
 <button id="add-row-btn"
@@ -47,13 +53,14 @@
             {{ p.inning }}回（{{ p.top_bottom }}）
             打者：{{ p.batter.name }}
             投手：{{ p.pitcher.name }}
-            → 結果：{{ p.batter_result }}
+            → 結果：{{ p.atbat_result }}
         </li>
     {% endfor %}
 </ul>
 
-<script id="row-template" type="text/template">
-    {% include "games/score_input/row.html" %}
+<!-- row.html をテンプレ化 -->
+<script id="row-template" type="text/html">
+{% include "games/score_input/row.html" %}
 </script>
 
 <script src="{% static 'games/score_input/score_input.js' %}"></script>

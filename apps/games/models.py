@@ -1,21 +1,9 @@
-# apps/games/models.py
 from django.db import models
 from apps.teams.models import Team
 from apps.players.models import Player
-
-"""
-games アプリのモデル定義（全文）
- - Game: 試合情報（日時・球場・先攻/後攻）
- - Lineup: 1試合・1チームの打順（1〜9番）
- - Inning: イニング（回 + 表裏）
- 
-注:
- - 投球（Pitch）やイニングの詳細な記録は apps.scores.Pitch 等で扱う想定。
- - apps 配下のモジュールを参照するため imports は apps.<app>.models の形式を使用。
-"""
+from django.db.models import JSONField
 
 class Game(models.Model):
-    # 大会名（任意）
     tournament = models.CharField(
         max_length=100,
         verbose_name="大会名",
@@ -23,12 +11,10 @@ class Game(models.Model):
         null=True
     )
 
-    # 試合日時
     game_datetime = models.DateTimeField(
         verbose_name="試合日時"
     )
 
-    # 球場名（任意）
     ballpark = models.CharField(
         max_length=100,
         verbose_name="球場名",
@@ -36,7 +22,6 @@ class Game(models.Model):
         null=True
     )
 
-    # 天候（選択肢）
     WEATHER_CHOICES = [
         ("sunny", "晴れ"),
         ("cloudy", "曇り"),
@@ -51,7 +36,6 @@ class Game(models.Model):
         null=True
     )
 
-    # 先攻チーム（home/away の概念ではなく「先に打つチーム」）
     first_batting = models.ForeignKey(
         Team,
         related_name="first_batting_games",
@@ -59,7 +43,6 @@ class Game(models.Model):
         verbose_name="先攻チーム"
     )
 
-    # 後攻チーム（後攻＝2番目に打つチーム）
     second_batting = models.ForeignKey(
         Team,
         related_name="second_batting_games",
@@ -67,26 +50,52 @@ class Game(models.Model):
         verbose_name="後攻チーム"
     )
 
-    class Meta:
-        verbose_name = "試合"
-        verbose_name_plural = "試合一覧"
-        ordering = ["-game_datetime"]
+    lineup_json = models.JSONField(default=dict, blank=True)
+    # --------------------------------------------------
+    # lineup_json を自動生成（必要なら）
+    # --------------------------------------------------
+    def build_lineup_json(self):
+        """games_lineup テーブルから lineup を生成して返す（dict）"""
+        top_team = self.first_batting
+        bottom_team = self.second_batting
 
-    def __str__(self):
-        # 管理画面などで見やすくするための文字列表示
-        return f"{self.game_datetime} {self.first_batting} vs {self.second_batting}"
+        top_lineups = self.lineups.filter(team=top_team).order_by("batting_order")
+        bottom_lineups = self.lineups.filter(team=bottom_team).order_by("batting_order")
+
+        def convert(lineup_qs):
+            return [
+                {
+                    "order": lu.batting_order,
+                    "id": lu.player.id,
+                    "name": lu.player.name,
+                    "position": lu.position,
+                }
+                for lu in lineup_qs
+            ]
+
+        def find_pitcher(lineup_qs):
+            p = lineup_qs.filter(position=1).first()
+            if p:
+                return {"id": p.player.id, "name": p.player.name, "position": "P"}
+            return None
+
+        return {
+            "top": {
+                "team_id": top_team.id,
+                "team_name": top_team.name,
+                "batting": convert(top_lineups),
+                "pitching": [find_pitcher(top_lineups)] if find_pitcher(top_lineups) else [],
+            },
+            "bottom": {
+                "team_id": bottom_team.id,
+                "team_name": bottom_team.name,
+                "batting": convert(bottom_lineups),
+                "pitching": [find_pitcher(bottom_lineups)] if find_pitcher(bottom_lineups) else [],
+            }
+        }
 
 
-# --------------------------------------------
-# Lineup（打順：1〜9番）
-# --------------------------------------------
 class Lineup(models.Model):
-    """
-    1試合・1チームに対する各打者のエントリ（1〜9番）
-    - Player.default_position は参考値。実際のその試合での守備位置はここで指定する。
-    - unique_together により (game, team, batting_order) がユニークになる。
-    """
-
     game = models.ForeignKey(
         Game,
         related_name="lineups",
@@ -103,7 +112,6 @@ class Lineup(models.Model):
         "打順（1〜9）"
     )
 
-    # Player.POSITION_CHOICES を参照（1〜9 の守備位置）
     position = models.IntegerField(
         "守備位置（1〜9）",
         choices=Player.POSITION_CHOICES,
@@ -127,32 +135,24 @@ class Lineup(models.Model):
         return f"{self.game} / {self.team} / {self.batting_order}番：{self.player.name}"
 
 
-# --------------------------------------------
-# Inning（回・表裏）
-# --------------------------------------------
 class Inning(models.Model):
-    """
-    イニング情報（1回〜）
-    """
     game = models.ForeignKey(
         Game,
         related_name="innings",
         on_delete=models.CASCADE
     )
-    number = models.PositiveSmallIntegerField("回")  
+    number = models.PositiveSmallIntegerField("回")
     is_top = models.BooleanField("表かどうか", default=True)
 
-    # Pitch と整合させるための文字列フィールド
     top_bottom = models.CharField(
         max_length=10,
         choices=[("top", "表"), ("bottom", "裏")],
         default="top"
     )
 
-    # ←★ ここから追加（超重要）
-    runs = models.PositiveSmallIntegerField(default=0)   # 表 or 裏の得点
-    outs = models.PositiveSmallIntegerField(default=0)   # アウトカウント
-    current_batter = models.PositiveSmallIntegerField(default=1)  # 打順 1〜9
+    runs = models.PositiveSmallIntegerField(default=0)
+    outs = models.PositiveSmallIntegerField(default=0)
+    current_batter = models.PositiveSmallIntegerField(default=1)
 
     class Meta:
         verbose_name = "イニング"

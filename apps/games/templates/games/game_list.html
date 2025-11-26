@@ -11,8 +11,9 @@
             <th>日時</th>
             <th>大会名</th>
             <th>球場</th>
-            <th>先攻</th>
-            <th>後攻</th>
+            <th>天候</th>
+            <th>先攻チーム</th>
+            <th>後攻チーム</th>
             <th>操作</th>
         </tr>
     </thead>
@@ -22,17 +23,19 @@
             <td>{{ game.game_datetime|date:"Y-m-d H:i" }}</td>
             <td>{{ game.tournament }}</td>
             <td>{{ game.ballpark }}</td>
+            <td>{{ game.get_weather_display }}</td>
             <td>{{ game.first_batting }}</td>
             <td>{{ game.second_batting }}</td>
             <td>
-                <a href="{% url 'games:score_top' game.pk %}" class="btn btn-success btn-sm">スコア</a>
+                <!-- 操作の順番：編集 → 削除 → スコア -->
                 <a href="{% url 'games:game_edit' game.pk %}" class="btn btn-warning btn-sm">編集</a>
                 <a href="{% url 'games:game_delete' game.pk %}" class="btn btn-danger btn-sm">削除</a>
+                <a href="{% url 'games:score_top' game.pk %}" class="btn btn-success btn-sm">スコア</a>
             </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="6">試合データがありません。</td>
+            <td colspan="7">試合データがありません。</td>
         </tr>
         {% endfor %}
     </tbody>

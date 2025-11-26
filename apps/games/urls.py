@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from . import views_score_input
+from .views_score_input import score_input, add_pitch, delete_pitch
 
 app_name = "games"
 
@@ -19,12 +19,14 @@ urlpatterns = [
     # （旧）投球開始
     path("<int:pk>/pitch/", views.pitch_start, name="pitch_start"),
 
-    # ★ スコア入力画面（今回のメイン）
-    path("<int:pk>/score_input/", views_score_input.score_input, name="score_input"),
+    # ======================
+    # スコア入力（新）
+    # ======================
+    path("<int:game_id>/score-input/", score_input, name="score_input"),
 
-    # ★ 投球保存（AJAX）
-    path("<int:pk>/score_input/save/", views_score_input.save_pitch, name="score_input_save"),
-
-    # ★ 最後の投球（最新の1行）削除（AJAX）
-    # path("<int:pk>/score_input/delete_last/", views_score_input.delete_last_pitch, name="score_input_delete_last"),
+    # ======================
+    # API: 投球の追加・削除
+    # ======================
+    path("<int:game_id>/pitch/add/", add_pitch, name="add_pitch"),
+    path("<int:game_id>/pitch/delete/", delete_pitch, name="delete_pitch"),
 ]

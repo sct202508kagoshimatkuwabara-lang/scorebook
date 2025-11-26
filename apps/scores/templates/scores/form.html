@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h2>スコア入力</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <!-- hidden（重要） -->
+    <input type="hidden" name="runners_json" id="runners_json">
+
+    <!-- 選手一覧を JS に渡す -->
+    <script id="players-json" type="application/json">
+        {{ players_json|safe }}
+    </script>
+
+    <!-- 基本情報 -->
+    <div class="mb-3">
+        <label>イニング</label>
+        <input type="number" name="inning" class="form-control" value="1">
+    </div>
+
+    <div class="mb-3">
+        <label>表 / 裏</label>
+        <select name="top_bottom" class="form-control">
+            <option value="top">表</option>
+            <option value="bottom">裏</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>投球番号</label>
+        <input type="number" name="pitch_number" value="{{ pitch_number }}" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label>投球結果</label>
+        <input type="text" id="pitch_result" name="pitch_result" class="form-control" readonly>
+        <div class="mt-2">
+            <button type="button" class="btn btn-primary" onclick="addPitchResult('strike')">ストライク</button>
+            <button type="button" class="btn btn-success" onclick="addPitchResult('ball')">ボール</button>
+            <button type="button" class="btn btn-warning" onclick="addPitchResult('foul')">ファウル</button>
+            <button type="button" class="btn btn-info" onclick="addPitchResult('inplay')">インプレー</button>
+        </div>
+    </div>
+
+    <!-- ランナー一覧 -->
+    <h4>ランナー状況</h4>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>塁</th>
+                <th>選手</th>
+                <th>結果</th>
+                <th>削除</th>
+            </tr>
+        </thead>
+        <tbody id="runner-table-body">
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-secondary" onclick="addRunnerRow()">
+        ＋ ランナー追加
+    </button>
+
+    <hr>
+
+    <button type="submit" class="btn btn-primary" onclick="beforeSubmit()">保存</button>
+</form>
+
+<script src="{% static 'scores/score_input.js' %}"></script>
+
+{% endblock %}

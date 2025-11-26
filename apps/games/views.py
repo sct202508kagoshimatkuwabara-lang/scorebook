@@ -104,18 +104,19 @@ def score_top(request, pk):
 def lineup_add(request, game_id, team_id):
     """
     - GET: 既存の Lineup を読み出して 1..9 を初期表示（ない場合は空欄）
-    - POST: 既存の Lineup を一旦削除して、1..9 の入力値で再作成（守備変更に強い方式）
+    - POST: 既存の Lineup を一旦削除して、1..9 の入力値で再作成
+            → ただし Pitch が紐づいているため、先にこのチーム側の Pitch を削除する必要あり
     """
     game = get_object_or_404(Game, pk=game_id)
     team = get_object_or_404(Team, pk=team_id)
 
-    # チームに所属する選手リスト（選択肢）
+    # チーム所属選手（選択肢）
     players = Player.objects.filter(team=team).order_by("name")
 
     existing_lineups = Lineup.objects.filter(game=game, team=team).order_by("batting_order")
 
+    # ----- GET -----
     if request.method == "GET":
-        # lineup_data に 1..9 の初期状態を作る
         lineup_data = []
         for i in range(1, 10):
             try:
@@ -132,18 +133,22 @@ def lineup_add(request, game_id, team_id):
             "team": team,
             "players": players,
             "lineup_data": lineup_data,
-            "position_choices": Player.POSITION_CHOICES,  # テンプレ用に渡す
+            "position_choices": Player.POSITION_CHOICES,
         })
 
-    # POST: 保存処理
-    # （安全策として既存の lineup は一度削除してから再作成）
+    # ----- POST（保存） -----
+
+    # ① 先に Pitch を削除 (このチームが打者になっているものだけ)
+    Pitch.objects.filter(game=game, hitter__team=team).delete()
+
+    # ② lineup を削除
     Lineup.objects.filter(game=game, team=team).delete()
 
+    # ③ lineup 再作成
     for i in range(1, 10):
         player_id = request.POST.get(f"player_{i}")
         position = request.POST.get(f"position_{i}")
         if player_id:
-            # create by direct ids to avoid extra queries
             Lineup.objects.create(
                 game=game,
                 team=team,
@@ -152,7 +157,6 @@ def lineup_add(request, game_id, team_id):
                 position=int(position) if position else None
             )
 
-    # 保存後はスコアトップへ戻す
     return redirect("games:score_top", pk=game_id)
 
 

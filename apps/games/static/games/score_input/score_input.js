@@ -1,9 +1,8 @@
 // ------------------------------
-// lineup_json の読み込み
+// lineup_json
 // ------------------------------
 const lineupDataTag = document.getElementById("lineup-data");
 const lineup = JSON.parse(lineupDataTag.textContent);
-
 
 // ------------------------------
 // DOM
@@ -12,60 +11,44 @@ const addRowBtn = document.getElementById("add-row-btn");
 const pitchBody = document.getElementById("pitch-body");
 const rowTemplate = document.getElementById("row-template").innerHTML;
 
-
 // ------------------------------
-// 現在の打者インデックス（1〜9をループ）
+// 進行状態
 // ------------------------------
 let batterIndex = 0;
-
-// 現在の投球数
 let pitchNumber = 1;
-
-// 現在の回
 let currentInning = 1;
-
-// 表/裏（とりあえず表固定）
 let isTopInning = true;
 
-
 // ------------------------------
-// 投手取得
+// 投手
 // ------------------------------
 function getPitcher(isTop) {
     const pitchingTeam = isTop ? lineup.bottom.pitching : lineup.top.pitching;
-    const pitcher = pitchingTeam.find(p => p.position === "P");
-    return pitcher || null;
+    return pitchingTeam.find(p => p.position === "P") || null;
 }
 
-
 // ------------------------------
-// 打者取得
+// 打者
 // ------------------------------
 function getBatter(isTop) {
     const battingTeam = isTop ? lineup.top.batting : lineup.bottom.batting;
-
-    console.log("battingTeam:", battingTeam);   // ★ デバッグ
-    console.log("batterIndex:", batterIndex);
-
     const batter = battingTeam[batterIndex % battingTeam.length];
     batterIndex++;
-
     return batter;
 }
 
-
 // ------------------------------
-// 行追加
+// 新規行
 // ------------------------------
 function addRow() {
+    console.log("addRow 呼ばれたよ");
+    
     const wrapper = document.createElement("tbody");
     wrapper.innerHTML = rowTemplate.trim();
     const row = wrapper.firstChild;
 
     // 打者
     const batter = getBatter(isTopInning);
-    console.log("選択された打者:", batter);   // ★ デバッグ
-
     row.querySelector(".batter-name").textContent = batter.name;
     row.querySelector(".batter-id").value = batter.id;
     row.dataset.battingOrder = batter.order;
@@ -84,14 +67,14 @@ function addRow() {
     pitchBody.appendChild(row);
 }
 
-
 // ------------------------------
-// 保存処理
+// 保存
 // ------------------------------
 function savePitch(row) {
     const gameId = window.location.pathname.split("/")[2];
 
     const payload = {
+        game_id: Number(gameId),
         inning: currentInning,
         top_bottom: isTopInning ? "top" : "bottom",
         pitch_number: pitchNumber++,
@@ -99,11 +82,10 @@ function savePitch(row) {
         hitter_id: row.querySelector(".batter-id").value,
         pitch_result: row.querySelector(".pitch_result").value,
         atbat_result: row.querySelector(".batter_result").value || null,
+        runner_action: row.querySelector(".runner_action").value || null,  // ★追加
     };
 
-    console.log("送信payload:", payload); // ★ デバッグログ
-
-    fetch(`/games/${gameId}/score_input/save/`, {
+    fetch(`/games/api/pitch/save/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -113,13 +95,12 @@ function savePitch(row) {
     })
     .then(r => r.json())
     .then(data => {
-        console.log("Saved:", data);
-        row.querySelector(".save-btn").disabled = true;
-        row.querySelector(".save-btn").textContent = "保存済";
+        const saveBtn = row.querySelector(".save-btn");
+        saveBtn.disabled = true;
+        saveBtn.textContent = "保存済";
     })
     .catch(err => console.error(err));
 }
-
 
 // ------------------------------
 // CSRF
@@ -135,8 +116,56 @@ function getCSRFToken() {
     return "";
 }
 
+// ------------------------------
+// 既存投球の描画
+// ------------------------------
+function renderExistingRow(p) {
+    const wrapper = document.createElement("tbody");
+    wrapper.innerHTML = rowTemplate.trim();
+    const row = wrapper.firstChild;
+
+    row.querySelector(".batter-name").textContent = p.batter_name;
+    row.querySelector(".batter-id").value = p.batter_id;
+    row.dataset.battingOrder = p.batting_order;
+
+    row.querySelector(".pitcher-name").textContent = p.pitcher_name;
+    row.querySelector(".pitcher-id").value = p.pitcher_id;
+
+    row.querySelector(".pitch_result").value = p.pitch_result ?? "";
+    row.querySelector(".batter_result").value = p.atbat_result ?? "";
+    row.querySelector(".runner_action").value = p.runner_action ?? "";  // ★追加
+
+    const saveBtn = row.querySelector(".save-btn");
+    saveBtn.disabled = true;
+    saveBtn.textContent = "保存済";
+
+    pitchBody.appendChild(row);
+}
 
 // ------------------------------
-// 行追加ボタン
+// ページロード
 // ------------------------------
-addRowBtn.addEventListener("click", addRow);
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOMContentLoaded 発火したよ");
+
+    const existingTag = document.getElementById("existing-pitches");
+    const existingPitches = JSON.parse(existingTag.textContent);
+
+    console.log("existingPitches =", existingPitches);
+
+    existingPitches.forEach(p => {
+        console.log("描画 row:", p);
+        renderExistingRow(p);
+    });
+
+    if (existingPitches.length > 0) {
+        pitchNumber = existingPitches[existingPitches.length - 1].pitch_number + 1;
+    }
+
+    console.log("pitchNumber after load =", pitchNumber);
+
+    addRowBtn.addEventListener("click", () => {
+        console.log("ボタン押された！");
+        addRow();
+    });
+});
