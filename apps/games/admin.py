@@ -1,7 +1,5 @@
-# apps/games/admin.py
 from django.contrib import admin
 from .models import Game, Lineup, Inning
-
 
 @admin.register(Lineup)
 class LineupAdmin(admin.ModelAdmin):
@@ -41,9 +39,14 @@ class InningAdmin(admin.ModelAdmin):
         "game",
         "number",
         "is_top",
-        "top_bottom",
+        "get_top_bottom",
         "runs",
         "outs",
         "current_batter",
     )
     list_filter = ("game", "number", "is_top")
+    
+    # get_top_bottom メソッドを追加して、'表' / '裏' を表示
+    def get_top_bottom(self, obj):
+        return '表' if obj.is_top else '裏'
+    get_top_bottom.short_description = '表/裏'  # 表示名のカスタマイズ

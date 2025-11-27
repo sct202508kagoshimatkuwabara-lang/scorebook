@@ -1,84 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h2>試合スコアトップ</h2>
 
-<h2 class="mb-3">スコア準備入力</h2>
-
-<div class="mb-4">
-    <table class="table table-bordered" style="width: 400px;">
-        <tr>
-            <th style="width:80px; text-align:left;">日時</th>
-            <td>{{ game.game_datetime|date:"Y-m-d H:i" }}</td>
-        </tr>
-        <tr>
-            <th style="width:80px; text-align:left;">大会名</th>
-            <td>{{ game.tournament }}</td>
-        </tr>
-    </table>
-</div>
-
-<hr>
-
-<h3 class="mt-4">メンバー表入力</h3>
-
-<table class="table table-bordered" style="width: 550px;">
-    <!-- 先攻 -->
+<table border="1" cellpadding="5">
     <tr>
-        <td style="width:30px; text-align:left;">
-            {% if first_team_has_lineup %}
-                <span style="display:inline-block; width:18px; height:18px; border-radius:60%; background:green;"></span>
-            {% else %}
-                <span style="display:inline-block; width:18px; height:18px; border-radius:60%; background:red;"></span>
-            {% endif %}
-        </td>
-
-        <th style="width:100px; text-align:left;">先攻チーム</th>
-
+        <th>試合日</th>
+        <th>ホームチーム</th>
+        <th>アウェイチーム</th>
+        <th>スコア入力</th>
+    </tr>
+    {% for game in games %}
+    <tr>
+        <td>{{ game.game_date }}</td>
+        <td>{{ game.first_batting.name }}</td>
+        <td>{{ game.second_batting.name }}</td>
         <td>
-            <a href="{% url 'games:lineup_add' game.id game.first_batting.id %}">
-                {{ game.first_batting.name }}
-            </a>
+            <a href="{% url 'games:score_input' game.id %}">入力</a>
         </td>
     </tr>
-
-    <!-- 後攻 -->
-    <tr>
-        <td style="text-align:left;">
-            {% if second_team_has_lineup %}
-                <span style="display:inline-block; width:18px; height:18px; border-radius:60%; background:green;"></span>
-            {% else %}
-                <span style="display:inline-block; width:18px; height:18px; border-radius:60%; background:red;"></span>
-            {% endif %}
-        </td>
-
-        <th style="width:100px; text-align:left;">後攻チーム</th>
-
-        <td>
-            <a href="{% url 'games:lineup_add' game.id game.second_batting.id %}">
-                {{ game.second_batting.name }}
-            </a>
-        </td>
-    </tr>
+    {% endfor %}
 </table>
-
-<hr>
-
-<h3 class="mt-4">スコア入力</h3>
-
-<p>投球の入力に進みます。</p>
-
-{% if both_ready %}
-    <a href="{% url 'games:score_input' game.id %}" class="btn btn-success btn-lg">
-        ▶ スコア入力
-    </a>
-{% else %}
-    <button class="btn btn-secondary btn-lg" disabled>
-        ▶ スコア入力（メンバー未登録）
-    </button>
-{% endif %}
-
-<hr>
-
-<a href="{% url 'games:game_list' %}" class="btn btn-secondary mt-3">← 試合一覧に戻る</a>
-
 {% endblock %}

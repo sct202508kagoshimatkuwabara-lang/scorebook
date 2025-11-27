@@ -17,7 +17,7 @@ class Game(models.Model):
 
     ballpark = models.CharField(
         max_length=100,
-        verbose_name="球場名",
+        verbose_name="球場",
         blank=True,
         null=True
     )
@@ -51,48 +51,69 @@ class Game(models.Model):
     )
 
     lineup_json = models.JSONField(default=dict, blank=True)
-    # --------------------------------------------------
-    # lineup_json を自動生成（必要なら）
-    # --------------------------------------------------
-    def build_lineup_json(self):
-        """games_lineup テーブルから lineup を生成して返す（dict）"""
-        top_team = self.first_batting
-        bottom_team = self.second_batting
 
-        top_lineups = self.lineups.filter(team=top_team).order_by("batting_order")
-        bottom_lineups = self.lineups.filter(team=bottom_team).order_by("batting_order")
+    def __str__(self):
+        return f"{self.tournament} {self.game_datetime.strftime('%Y-%m-%d %H:%M')}"
 
-        def convert(lineup_qs):
-            return [
-                {
-                    "order": lu.batting_order,
-                    "id": lu.player.id,
-                    "name": lu.player.name,
-                    "position": lu.position,
-                }
-                for lu in lineup_qs
-            ]
 
-        def find_pitcher(lineup_qs):
-            p = lineup_qs.filter(position=1).first()
-            if p:
-                return {"id": p.player.id, "name": p.player.name, "position": "P"}
-            return None
+class Score(models.Model):
+    game = models.ForeignKey(
+        Game,
+        on_delete=models.CASCADE,
+        related_name="scores",
+        verbose_name="試合"
+    )
 
-        return {
-            "top": {
-                "team_id": top_team.id,
-                "team_name": top_team.name,
-                "batting": convert(top_lineups),
-                "pitching": [find_pitcher(top_lineups)] if find_pitcher(top_lineups) else [],
-            },
-            "bottom": {
-                "team_id": bottom_team.id,
-                "team_name": bottom_team.name,
-                "batting": convert(bottom_lineups),
-                "pitching": [find_pitcher(bottom_lineups)] if find_pitcher(bottom_lineups) else [],
-            }
-        }
+    inning = models.PositiveSmallIntegerField(
+        verbose_name="イニング"
+    )
+
+    is_top = models.BooleanField(
+        verbose_name="表攻撃",
+        default=True
+    )
+
+    batter = models.ForeignKey(
+        Player,
+        on_delete=models.CASCADE,
+        related_name="batter_scores",
+        verbose_name="打者"
+    )
+
+    pitcher = models.ForeignKey(
+        Player,
+        on_delete=models.CASCADE,
+        related_name="pitcher_scores",
+        verbose_name="投手"
+    )
+
+    result = models.CharField(
+        max_length=50,
+        verbose_name="結果",
+        blank=True,
+        null=True
+    )
+
+    order = models.PositiveSmallIntegerField(
+        verbose_name="打席順",
+        default=1
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
+
+    class Meta:
+        verbose_name = "スコア"
+        verbose_name_plural = "スコア一覧"
+        ordering = ["game", "inning", "is_top", "order"]
+
+    def __str__(self):
+        return f"{self.game} {self.inning}回{'表' if self.is_top else '裏'} {self.order}番打席"
 
 
 class Lineup(models.Model):
@@ -133,21 +154,23 @@ class Lineup(models.Model):
 
     def __str__(self):
         return f"{self.game} / {self.team} / {self.batting_order}番：{self.player.name}"
-
+    
 
 class Inning(models.Model):
     game = models.ForeignKey(
         Game,
+        on_delete=models.CASCADE,
         related_name="innings",
-        on_delete=models.CASCADE
+        verbose_name="試合"
     )
-    number = models.PositiveSmallIntegerField("回")
-    is_top = models.BooleanField("表かどうか", default=True)
 
-    top_bottom = models.CharField(
-        max_length=10,
-        choices=[("top", "表"), ("bottom", "裏")],
-        default="top"
+    number = models.PositiveSmallIntegerField(
+        verbose_name="イニング番号"
+    )
+
+    is_top = models.BooleanField(
+        verbose_name="表攻撃",
+        default=True
     )
 
     runs = models.PositiveSmallIntegerField(default=0)

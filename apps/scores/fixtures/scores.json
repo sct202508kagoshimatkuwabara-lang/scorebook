@@ -1,0 +1,62 @@
+[
+    {
+        "model": "games.score",
+        "pk": 1,
+        "fields": {
+            "game": 1,
+            "inning": 1,
+            "is_top": true,
+            "batter": 1,
+            "pitcher": 2,
+            "result": "三振",
+            "order": 1,
+            "created_at": "2025-11-27T12:00:00",
+            "updated_at": "2025-11-27T12:00:00"
+        }
+    },
+    {
+        "model": "games.score",
+        "pk": 2,
+        "fields": {
+            "game": 1,
+            "inning": 1,
+            "is_top": false,
+            "batter": 2,
+            "pitcher": 1,
+            "result": "ヒット",
+            "order": 1,
+            "created_at": "2025-11-27T12:05:00",
+            "updated_at": "2025-11-27T12:05:00"
+        }
+    },
+    {
+        "model": "games.score",
+        "pk": 3,
+        "fields": {
+            "game": 2,
+            "inning": 1,
+            "is_top": true,
+            "batter": 3,
+            "pitcher": 4,
+            "result": "三振",
+            "order": 1,
+            "created_at": "2025-11-27T15:00:00",
+            "updated_at": "2025-11-27T15:00:00"
+        }
+    },
+    {
+        "model": "games.score",
+        "pk": 4,
+        "fields": {
+            "game": 2,
+            "inning": 1,
+            "is_top": false,
+            "batter": 4,
+            "pitcher": 3,
+            "result": "ボール",
+            "order": 1,
+            "created_at": "2025-11-27T15:05:00",
+            "updated_at": "2025-11-27T15:05:00"
+        }
+    }
+]

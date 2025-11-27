@@ -1,65 +1,7 @@
-<tr class="pitch-row">
-
-    <!-- 打者。JSが lineup_json を見てセット -->
-    <td class="batter-cell">
-        <span class="batter-name"></span>
-        <input type="hidden" class="batter-id">
-    </td>
-
-    <!-- 投手 -->
-    <td class="pitcher-cell">
-        <span class="pitcher-name"></span>
-        <input type="hidden" class="pitcher-id">
-    </td>
-
-    <!-- 打者結果 -->
+<tr>
+    <td>{{ batter.order }}</td>
+    <td>{{ batter.player.name }}</td>
     <td>
-        <select class="batter_result">
-            <option value="">--結果--</option>
-            <option value="strikeout">三振</option>
-            <option value="fly">フライ</option>
-            <option value="groundout">ゴロアウト</option>
-            <option value="lineout">ライナーアウト</option>
-            <option value="double_play">併殺</option>
-
-            <option value="single">単打</option>
-            <option value="double">二塁打</option>
-            <option value="triple">三塁打</option>
-            <option value="homerun">本塁打</option>
-
-            <option value="walk">四球</option>
-            <option value="deadball">死球</option>
-            <option value="error">エラー</option>
-            <option value="fielder_choice">野選</option>
-        </select>
+        <input type="text" name="result_{{ batter.id }}" value="{{ batter.result }}">
     </td>
-
-    <!-- 走者 -->
-    <td>
-        <select class="runner_action">
-            <option value="">--走者--</option>
-            <option value="none">なし</option>
-            <option value="advance_1">1つ進塁</option>
-            <option value="advance_2">2つ進塁</option>
-            <option value="advance_3">3つ進塁</option>
-            <option value="score">生還</option>
-            <option value="out_on_base">走塁死</option>
-        </select>
-    </td>
-
-    <!-- 投球 -->
-    <td>
-        <select class="pitch_result">
-            <option value="">--投球--</option>
-            <option value="ball">ボール</option>
-            <option value="strike">ストライク</option>
-            <option value="foul">ファウル</option>
-            <option value="inplay">インプレー</option>
-        </select>
-    </td>
-
-    <td>
-        <button type="button" class="save-btn">保存</button>
-    </td>
-
 </tr>

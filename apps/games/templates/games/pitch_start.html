@@ -1,34 +1,20 @@
-<h2>投球入力（開始）</h2>
-<p>{{ inning_display }}</p>
+{% extends "base.html" %}
 
-<p>
-攻撃：{{ offense_team }}<br>
-守備：{{ defense_team }}<br>
-打者：{{ batter }}（{{ batter_pos }}）<br>
-投手：{{ pitcher }}
-</p>
-
-<h3>カウント</h3>
-<p>S {{ count_s }}　B {{ count_b }}　O {{ count_o }}</p>
-
-<h3>投球入力</h3>
+{% block content %}
+<h2>投手開始</h2>
 
 <form method="POST">
     {% csrf_token %}
-    <button type="submit" name="result" value="strike">ストライク</button>
-    <button type="submit" name="result" value="ball">ボール</button>
-    <button type="submit" name="result" value="foul">ファウル</button>
-    <button type="submit" name="result" value="hit">ヒット</button>
+    <label for="pitcher">投手選択</label>
+    <select name="pitcher">
+        {% for player in players %}
+            <option value="{{ player.id }}" {% if game.pitcher.id == player.id %}selected{% endif %}>{{ player.name }}</option>
+        {% endfor %}
+    </select><br>
 
-    <!-- ★ここが最重要：絶対に value="out" で送る -->
-    <button type="submit" name="result" value="out">アウト</button>
+    <label for="inning">イニング</label>
+    <input type="number" name="inning" value="{{ inning }}"><br>
+
+    <button type="submit">開始</button>
 </form>
-
-<h3>投球履歴</h3>
-<ul>
-    {% for p in pitch_history %}
-        <li>{{ p.created_at }}：{{ p.get_pitch_result_display }}</li>
-    {% endfor %}
-</ul>
-
-<p><a href="{% url 'games:score_top' game.pk %}">スコアトップへ戻る</a></p>
+{% endblock %}

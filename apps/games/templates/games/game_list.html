@@ -1,44 +1,28 @@
 {% extends "base.html" %}
+
 {% block content %}
+<h2>ゲーム一覧</h2>
 
-<h2 class="mb-4">試合一覧</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>日付</th>
+        <th>ホーム</th>
+        <th>アウェイ</th>
+        <th>スコア入力</th>
+    </tr>
 
-<a href="{% url 'games:game_add' %}" class="btn btn-primary mb-3">＋ 新規試合</a>
-
-<table class="table table-striped table-bordered" border="1">
-    <thead>
-        <tr>
-            <th>日時</th>
-            <th>大会名</th>
-            <th>球場</th>
-            <th>天候</th>
-            <th>先攻チーム</th>
-            <th>後攻チーム</th>
-            <th>操作</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for game in games %}
-        <tr>
-            <td>{{ game.game_datetime|date:"Y-m-d H:i" }}</td>
-            <td>{{ game.tournament }}</td>
-            <td>{{ game.ballpark }}</td>
-            <td>{{ game.get_weather_display }}</td>
-            <td>{{ game.first_batting }}</td>
-            <td>{{ game.second_batting }}</td>
-            <td>
-                <!-- 操作の順番：編集 → 削除 → スコア -->
-                <a href="{% url 'games:game_edit' game.pk %}" class="btn btn-warning btn-sm">編集</a>
-                <a href="{% url 'games:game_delete' game.pk %}" class="btn btn-danger btn-sm">削除</a>
-                <a href="{% url 'games:score_top' game.pk %}" class="btn btn-success btn-sm">スコア</a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="7">試合データがありません。</td>
-        </tr>
-        {% endfor %}
-    </tbody>
+    {% for g in games %}
+    <tr>
+        <td>{{ g.id }}</td>
+        <td>{{ g.game_datetime }}</td>  <!-- game_date → game_datetime に修正 -->
+        <td>{{ g.first_batting.name }}</td>  <!-- team_home → first_batting に修正 -->
+        <td>{{ g.second_batting.name }}</td>  <!-- team_away → second_batting に修正 -->
+        <td>
+            <a href="{% url 'games:score_input' g.id %}">入力へ</a>
+        </td>
+    </tr>
+    {% endfor %}
 </table>
 
 {% endblock %}

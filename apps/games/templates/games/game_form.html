@@ -1,40 +1,41 @@
 {% extends "base.html" %}
+
 {% block content %}
+<h2>ゲーム登録</h2>
 
-<h2 class="mb-4">試合概要</h2>
-
-<form method="post">
+<form method="POST">
     {% csrf_token %}
+    <label for="tournament">大会名</label>
+    <input type="text" name="tournament" value="{{ game.tournament }}"><br>
 
-    <table class="table table-bordered">
-        <tr>
-            <th>試合日時</th>
-            <td>{{ form.game_datetime }}</td>
-        </tr>
-        <tr>
-            <th>大会名</th>
-            <td>{{ form.tournament }}</td>
-        </tr>
-        <tr>
-            <th>球場名</th>
-            <td>{{ form.ballpark }}</td>
-        </tr>
-        <tr>
-            <th>天候</th>
-            <td>{{ form.weather }}</td>
-        </tr>
-        <tr>
-            <th>先攻チーム</th>
-            <td>{{ form.first_batting }}</td>
-        </tr>
-        <tr>
-            <th>後攻チーム</th>
-            <td>{{ form.second_batting }}</td>
-        </tr>
-    </table>
+    <label for="game_datetime">試合日時</label>
+    <input type="datetime-local" name="game_datetime" value="{{ game.game_datetime|date:'Y-m-d\TH:i' }}"><br>
 
-    <button type="submit" class="btn btn-primary">保存</button>
-    <a href="{% url 'games:game_list' %}" class="btn btn-secondary">戻る</a>
+    <label for="ballpark">球場名</label>
+    <input type="text" name="ballpark" value="{{ game.ballpark }}"><br>
+
+    <label for="weather">天候</label>
+    <select name="weather">
+        <option value="sunny" {% if game.weather == 'sunny' %}selected{% endif %}>晴れ</option>
+        <option value="cloudy" {% if game.weather == 'cloudy' %}selected{% endif %}>曇り</option>
+        <option value="rain" {% if game.weather == 'rain' %}selected{% endif %}>雨</option>
+        <option value="other" {% if game.weather == 'other' %}selected{% endif %}>その他</option>
+    </select><br>
+
+    <label for="first_batting">先攻チーム</label>
+    <select name="first_batting">
+        {% for team in teams %}
+            <option value="{{ team.id }}" {% if game.first_batting.id == team.id %}selected{% endif %}>{{ team.name }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="second_batting">後攻チーム</label>
+    <select name="second_batting">
+        {% for team in teams %}
+            <option value="{{ team.id }}" {% if game.second_batting.id == team.id %}selected{% endif %}>{{ team.name }}</option>
+        {% endfor %}
+    </select><br>
+
+    <button type="submit">保存</button>
 </form>
-
 {% endblock %}

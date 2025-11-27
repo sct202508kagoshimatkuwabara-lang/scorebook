@@ -1,67 +1,53 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block content %}
+<h2>{{ game.tournament }} - {{ game.game_datetime }}</h2>
 
-<h2>スコア入力：</h2>
+<h3>打順</h3>
+<table border="1" cellpadding="5" id="batting-table">
+    <tr>
+        <th>打順</th>
+        <th>選手名</th>
+        <th>結果</th>
+    </tr>
 
-<div style="margin-bottom: 10px; font-size: 18px; line-height: 1.6;">
-    {{ game.game_datetime|date:"Y-m-d H:i" }}〜
-    <br><br>
-    {{ game.first_batting.name }}
-    <br>
-    vs {{ game.second_batting.name }}
-</div>
-
-<hr>
-
-<!-- lineup -->
-<script id="lineup-data" type="application/json">
-    {{ lineup_json|safe }}
-</script>
-
-<!-- ★JS が読みに行く ID を existing-pitches に統一 -->
-<script id="existing-pitches" type="application/json">
-    {{ recent_pitches_json|safe }}
-</script>
-
-<button id="add-row-btn"
-        style="padding:8px 16px; margin-bottom:15px; background:#0a74da; color:white; border-radius:4px;">
-    ＋ 行を追加
-</button>
-
-<table id="pitch-table" border="1" cellspacing="0" cellpadding="6">
-    <thead>
-        <tr>
-            <th>打者</th>
-            <th>投手</th>
-            <th>打者結果</th>
-            <th>走者動作</th>
-            <th>投球</th>
-            <th>-</th>
-        </tr>
-    </thead>
-    <tbody id="pitch-body"></tbody>
+    {% for batter in batters %}
+    <tr>
+        <td>{{ batter.order }}</td>
+        <td>{{ batter.player.name }}</td>
+        <td>
+            <input type="text" name="result_{{ batter.id }}" value="{{ batter.result }}">
+        </td>
+    </tr>
+    {% endfor %}
 </table>
 
-<hr>
+<button id="add-batting" type="button">打席追加</button>
 
-<h3>最新 10 件</h3>
-<ul id="recent-list">
-    {% for p in recent_pitches %}
-        <li>
-            {{ p.inning }}回（{{ p.top_bottom }}）
-            打者：{{ p.batter.name }}
-            投手：{{ p.pitcher.name }}
-            → 結果：{{ p.atbat_result }}
-        </li>
+<h3>投球</h3>
+<table border="1" cellpadding="5" id="pitch-table">
+    <tr>
+        <th>球種</th>
+        <th>球速</th>
+        <th>投球結果</th>
+    </tr>
+
+    {% for pitch in pitches %}
+    <tr>
+        <td>
+            <input type="text" name="pitch_type_{{ pitch.id }}" value="{{ pitch.pitch_type }}">
+        </td>
+        <td>
+            <input type="number" name="speed_{{ pitch.id }}" value="{{ pitch.speed }}">
+        </td>
+        <td>
+            <input type="text" name="pitch_result_{{ pitch.id }}" value="{{ pitch.result_type }}">
+        </td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
 
-<!-- row.html をテンプレ化 -->
-<script id="row-template" type="text/html">
-{% include "games/score_input/row.html" %}
-</script>
+<button id="add-pitch" type="button">投球追加</button>
 
-<script src="{% static 'games/score_input/score_input.js' %}"></script>
+<button type="submit">保存</button>
 {% endblock %}

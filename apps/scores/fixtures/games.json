@@ -1,62 +1,120 @@
 [
-  {
-    "model": "games.Game",
-    "pk": 1,
-    "fields": {
-      "tournament": "オープン戦",
-      "game_datetime": "2025-03-01T13:00:00",
-      "ballpark": "エスコンフィールド",
-      "weather": "sunny",
-      "first_batting": 2,
-      "second_batting": 1
+    {
+        "model": "games.game",
+        "pk": 1,
+        "fields": {
+            "tournament": "大会A",
+            "game_datetime": "2025-11-27T12:00:00",
+            "ballpark": "球場A",
+            "weather": "sunny",
+            "first_batting": 1,
+            "second_batting": 2,
+            "lineup_json": {}
+        }
+    },
+    {
+        "model": "games.lineup",
+        "pk": 1,
+        "fields": {
+            "game": 1,
+            "team": 1,
+            "batting_order": 1,
+            "position": 1,
+            "player": 1
+        }
+    },
+    {
+        "model": "games.lineup",
+        "pk": 2,
+        "fields": {
+            "game": 1,
+            "team": 2,
+            "batting_order": 1,
+            "position": 1,
+            "player": 2
+        }
+    },
+    {
+        "model": "games.inning",
+        "pk": 1,
+        "fields": {
+            "game": 1,
+            "number": 1,
+            "is_top": true,
+            "runs": 0,
+            "outs": 3,
+            "current_batter": 1
+        }
+    },
+    {
+        "model": "games.inning",
+        "pk": 2,
+        "fields": {
+            "game": 1,
+            "number": 1,
+            "is_top": false,
+            "runs": 1,
+            "outs": 3,
+            "current_batter": 2
+        }
+    },
+    {
+        "model": "games.game",
+        "pk": 2,
+        "fields": {
+            "tournament": "大会B",
+            "game_datetime": "2025-11-27T15:00:00",
+            "ballpark": "球場B",
+            "weather": "cloudy",
+            "first_batting": 3,
+            "second_batting": 4,
+            "lineup_json": {}
+        }
+    },
+    {
+        "model": "games.lineup",
+        "pk": 3,
+        "fields": {
+            "game": 2,
+            "team": 3,
+            "batting_order": 1,
+            "position": 1,
+            "player": 3
+        }
+    },
+    {
+        "model": "games.lineup",
+        "pk": 4,
+        "fields": {
+            "game": 2,
+            "team": 4,
+            "batting_order": 1,
+            "position": 1,
+            "player": 4
+        }
+    },
+    {
+        "model": "games.inning",
+        "pk": 3,
+        "fields": {
+            "game": 2,
+            "number": 1,
+            "is_top": true,
+            "runs": 0,
+            "outs": 3,
+            "current_batter": 3
+        }
+    },
+    {
+        "model": "games.inning",
+        "pk": 4,
+        "fields": {
+            "game": 2,
+            "number": 1,
+            "is_top": false,
+            "runs": 2,
+            "outs": 3,
+            "current_batter": 4
+        }
     }
-  },
-  {
-    "model": "games.Game",
-    "pk": 2,
-    "fields": {
-      "tournament": "パ・リーグ公式戦",
-      "game_datetime": "2025-03-05T18:00:00",
-      "ballpark": "エスコンフィールド",
-      "weather": "cloudy",
-      "first_batting": 5,
-      "second_batting": 1
-    }
-  },
-  {
-    "model": "games.Game",
-    "pk": 3,
-    "fields": {
-      "tournament": "パ・リーグ公式戦",
-      "game_datetime": "2025-03-12T18:00:00",
-      "ballpark": "ZOZOマリンスタジアム",
-      "weather": "rain",
-      "first_batting": 4,
-      "second_batting": 1
-    }
-  },
-  {
-    "model": "games.Game",
-    "pk": 4,
-    "fields": {
-      "tournament": "交流戦",
-      "game_datetime": "2025-03-18T18:00:00",
-      "ballpark": "京セラドーム大阪",
-      "weather": "sunny",
-      "first_batting": 6,
-      "second_batting": 1
-    }
-  },
-  {
-    "model": "games.Game",
-    "pk": 5,
-    "fields": {
-      "tournament": "交流戦",
-      "game_datetime": "2025-03-25T18:00:00",
-      "ballpark": "エスコンフィールド",
-      "weather": "cloudy",
-      "first_batting": 2,
-      "second_batting": 1
-    }
-  }
 ]

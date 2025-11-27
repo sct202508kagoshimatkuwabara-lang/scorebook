@@ -6,32 +6,26 @@
             "game": 1,
             "inning": 1,
             "top_bottom": "top",
-
-            "pitcher": 10,
-            "catcher": 11,
-            "first": 12,
-            "second": 13,
-            "third": 14,
-            "short": 15,
-            "left": 16,
-            "center": 17,
-            "right": 18,
-
+            "pitcher": 1,
+            "catcher": 2,
+            "first": 3,
+            "second": 4,
+            "third": 5,
+            "short": 6,
+            "left": 7,
+            "center": 8,
+            "right": 9,
             "hitter": 1,
             "batting_order": 1,
-
-            "atbat_result": null,
+            "atbat_result": "三振",
             "pitch_result": "strike",
             "pitch_number": 1,
-
             "runner_1b": null,
             "runner_2b": null,
             "runner_3b": null,
-
-            "created_at": "2025-03-25T09:00:00Z"
+            "created_at": "2025-11-27T12:00:00"
         }
     },
-
     {
         "model": "scores.pitch",
         "pk": 2,
@@ -39,29 +33,78 @@
             "game": 1,
             "inning": 1,
             "top_bottom": "top",
-
-            "pitcher": 10,
-            "catcher": 11,
-            "first": 12,
-            "second": 13,
-            "third": 14,
-            "short": 15,
-            "left": 16,
-            "center": 17,
-            "right": 18,
-
+            "pitcher": 1,
+            "catcher": 2,
+            "first": 3,
+            "second": 4,
+            "third": 5,
+            "short": 6,
+            "left": 7,
+            "center": 8,
+            "right": 9,
             "hitter": 2,
             "batting_order": 2,
-
-            "atbat_result": "groundout",
+            "atbat_result": "ヒット",
             "pitch_result": "inplay",
             "pitch_number": 2,
-
             "runner_1b": null,
             "runner_2b": null,
             "runner_3b": null,
-
-            "created_at": "2025-03-25T09:00:05Z"
+            "created_at": "2025-11-27T12:05:00"
+        }
+    },
+    {
+        "model": "scores.pitch",
+        "pk": 3,
+        "fields": {
+            "game": 2,
+            "inning": 1,
+            "top_bottom": "bottom",
+            "pitcher": 3,
+            "catcher": 4,
+            "first": 5,
+            "second": 6,
+            "third": 7,
+            "short": 8,
+            "left": 9,
+            "center": 10,
+            "right": 11,
+            "hitter": 3,
+            "batting_order": 3,
+            "atbat_result": "ボール",
+            "pitch_result": "ball",
+            "pitch_number": 1,
+            "runner_1b": 1,
+            "runner_2b": null,
+            "runner_3b": null,
+            "created_at": "2025-11-27T15:00:00"
+        }
+    },
+    {
+        "model": "scores.pitch",
+        "pk": 4,
+        "fields": {
+            "game": 2,
+            "inning": 1,
+            "top_bottom": "bottom",
+            "pitcher": 3,
+            "catcher": 4,
+            "first": 5,
+            "second": 6,
+            "third": 7,
+            "short": 8,
+            "left": 9,
+            "center": 10,
+            "right": 11,
+            "hitter": 4,
+            "batting_order": 4,
+            "atbat_result": "ファウル",
+            "pitch_result": "foul",
+            "pitch_number": 2,
+            "runner_1b": null,
+            "runner_2b": 1,
+            "runner_3b": null,
+            "created_at": "2025-11-27T15:05:00"
         }
     }
 ]
